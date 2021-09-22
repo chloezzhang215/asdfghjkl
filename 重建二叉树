@@ -7,7 +7,7 @@ class Solution:
     # 返回构造的TreeNode根节点 给定前序和中序
     def reConstructBinaryTree(self, pre, vin):
         # write code here
-        if not pre:
+        if pre == []:
             return None
         root = TreeLinkNode(pre[0])
         n = vin.index(root.val)
