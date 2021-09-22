@@ -1,0 +1,16 @@
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    # 返回构造的TreeNode根节点 给定前序和中序
+    def reConstructBinaryTree(self, pre, vin):
+        # write code here
+        if not pre:
+            return None
+        root = TreeLinkNode(pre[0])
+        n = vin.index(root.val)
+        root.left = self.reConstructBinaryTree(pre[1:n+1], vin[:n])
+        root.right = self.reConstructBinaryTree(pre[n+1:], vin[n+1:])
+        return root
