@@ -1,0 +1,7 @@
+from bisect import bisect, bisect_left
+
+class Solution:
+    def searchRange(self, nums, target):
+        l = bisect_left(nums,target)
+        r = bisect(nums,target)
+        return [-1, -1] if l == r else [l, r - 1]
