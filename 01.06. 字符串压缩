@@ -1,0 +1,17 @@
+class Solution:
+    def compressString(self, S: str) -> str:
+        res = []
+        count = 1
+        S += ' ' # 扩展处理边界问题
+        for i in range(len(S)-1):
+            if S[i] == S[i+1]:
+                count += 1
+            else:
+                res.append([S[i], count])
+                count = 1
+
+        new_S = ''
+        for j in res:
+            new_S += j[0] + str(j[1])
+        
+        return new_S if len(new_S) < len(S)-1 else S[:len(S)-1]
