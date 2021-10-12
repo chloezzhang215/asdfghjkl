@@ -6,9 +6,24 @@ second当前元素不一致，后面都相同，所以判断是否first[i+1:] ==
 
 class Solution:
     def oneEditAway(self, first: str, second: str) -> bool:
-        if abs(len(first)-len(second)) > 1: return False
-        if len(first) > len(second): first,second = second,first
-        for i in range(len(first)):
-            if first[i] == second[i]: continue
-            return first[i:] == second[i + 1:] or first[i+1:] == second[i+1:]
-        return True
+        if abs(len(first)-len(second)) > 1:
+            return False
+        
+        replace_count = 0
+        if len(first) == len(second):
+            for i in range(len(first)):
+                if first[i] != second[i]:
+                    replace_count += 1
+                if replace_count >= 2:
+                    return False
+                
+            return True
+            
+        if len(second) > len(first):
+            first,second = second, first
+
+        if len(first) > len(second):
+            for i in range(len(first)):
+                if first[0:i] + first[i+1:] == second:
+                    return True
+            return False
