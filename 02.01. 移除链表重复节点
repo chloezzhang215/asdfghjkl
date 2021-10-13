@@ -10,14 +10,12 @@ class Solution:
             return head
         vals = {head.val}
         node = head
-        # 枚举前驱节点
-        while node.next:
-            # 当前待删除节点
-            cur = node.next
-            if cur.val not in vals:
-                vals.add(cur.val)
-                node = node.next
+        
+        while head.next:
+            if head.next.val not in vals:
+                vals.add(head.next.val)
+                head = head.next
             else:
-                node.next = node.next.next
-        return head
+                head.next = head.next.next
+        return node
                 
