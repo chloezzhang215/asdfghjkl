@@ -8,16 +8,16 @@ class Solution:
     def removeDuplicateNodes(self, head: ListNode) -> ListNode:
         if not head:
             return head
-        occurred = {head.val}
-        pos = head
+        vals = {head.val}
+        node = head
         # 枚举前驱节点
-        while pos.next:
+        while node.next:
             # 当前待删除节点
-            cur = pos.next
-            if cur.val not in occurred:
-                occurred.add(cur.val)
-                pos = pos.next
+            cur = node.next
+            if cur.val not in vals:
+                vals.add(cur.val)
+                node = node.next
             else:
-                pos.next = pos.next.next
+                node.next = node.next.next
         return head
                 
