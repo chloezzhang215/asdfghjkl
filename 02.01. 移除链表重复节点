@@ -6,10 +6,10 @@
 
 class Solution:
     def removeDuplicateNodes(self, head: ListNode) -> ListNode:
-        if not head:
+        if head == None:
             return head
         vals = {head.val}
-        node = head
+        cur = head
         
         while head.next:
             if head.next.val not in vals:
@@ -17,5 +17,5 @@ class Solution:
                 head = head.next
             else:
                 head.next = head.next.next
-        return node
+        return cur  
                 
