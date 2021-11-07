@@ -1,0 +1,26 @@
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        res = set()
+        while head:
+            if head in res:
+                return head
+            else:
+                res.add(head)
+                head = head.next
+
+
+快慢指针:
+
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
+                fast = head
+                while fast != slow:
+                    fast = fast.next
+                    slow = slow.next
+                return slow
