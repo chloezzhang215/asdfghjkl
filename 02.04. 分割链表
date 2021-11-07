@@ -6,13 +6,19 @@
 
 class Solution:
     def partition(self, head: ListNode, x: int) -> ListNode:
-        if not head:
+        if not head: 
             return head
-            
-        p, q = head, head
-        while q:
-            if q.val < x:
-                q.val, p.val = p.val, q.val
-                p = p.next
-            q = q.next
+
+        cur = head.next
+        pre = head
+        while cur != None:  
+            if cur.val < x:
+                tmp = cur.next 
+                pre.next = tmp
+                cur.next = head
+                head = cur
+                cur = tmp
+            else:
+                pre = cur
+                cur = cur.next
         return head
