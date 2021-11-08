@@ -1,0 +1,16 @@
+def __init__(self, stackSize: int):
+    self.stack = [[] for i in range(3)]
+    self.stackSize = stackSize
+
+def push(self, stackNum: int, value: int) -> None:
+    if len(self.stack[stackNum]) < self.stackSize:
+        self.stack[stackNum].append(value)
+
+def pop(self, stackNum: int) -> int:
+    return self.stack[stackNum].pop() if self.stack[stackNum] else -1
+
+def peek(self, stackNum: int) -> int:
+    return self.stack[stackNum][-1] if self.stack[stackNum] else -1
+
+def isEmpty(self, stackNum: int) -> bool:
+    return self.stack[stackNum] == []
