@@ -1,0 +1,47 @@
+class AnimalShelf:
+
+    def __init__(self):
+        self.queue = deque()
+
+    def enqueue(self, animal: List[int]) -> None:
+        self.queue.append(animal)
+
+    def dequeueAny(self) -> List[int]:
+        res = [-1,-1]
+        if self.queue:
+            res = self.queue.popleft()
+        return res
+
+
+    def dequeueDog(self) -> List[int]:
+        res = [-1,-1]
+        n = 0
+        while n < len(self.queue) :
+            if self.queue[n][1] == 1:
+                res = self.queue[n]
+                self.queue.remove(self.queue[n])
+                break
+            n += 1
+
+        return res
+
+    def dequeueCat(self) -> List[int]:
+        res = [-1,-1]
+        n = 0
+        while n < len(self.queue) :
+            if self.queue[n][1] == 0:
+                res = self.queue[n]
+                self.queue.remove(self.queue[n])
+                break
+            n += 1
+
+        return res
+
+            
+            
+# Your AnimalShelf object will be instantiated and called as such:
+# obj = AnimalShelf()
+# obj.enqueue(animal)
+# param_2 = obj.dequeueAny()
+# param_3 = obj.dequeueDog()
+# param_4 = obj.dequeueCat()
