@@ -5,18 +5,11 @@ class Solution(object):
         :rtype: int
         """
         res = 0
-        def fibo(num):
-            if num == 1:
-                res = 1
-            elif num == 0:
-                res = 0
-            else:
-                res = fibo(num-1) + fibo(num-2)
-            return res
-        
-        return fibo(n)
-         
-            
     
-        
-        
+        if n == 1:
+            res = 1
+        elif n == 0:
+            res = 0
+        else:
+            res += self.fib(n-1)+self.fib(n-2)
+        return res
