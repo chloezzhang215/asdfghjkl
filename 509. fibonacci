@@ -1,0 +1,22 @@
+class Solution(object):
+    def fib(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        res = 0
+        def fibo(num):
+            if num == 1:
+                res = 1
+            elif num == 0:
+                res = 0
+            else:
+                res = fibo(num-1) + fibo(num-2)
+            return res
+        
+        return fibo(n)
+         
+            
+    
+        
+        
